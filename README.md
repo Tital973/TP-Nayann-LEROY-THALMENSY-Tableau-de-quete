@@ -1,44 +1,119 @@
-# TP
+# Tableau des Quêtes RPG
 
-This template should help get you started developing with Vue 3 in Vite.
+Projet réalisé dans le cadre du TP Vue.js de développement Web.
 
-## Recommended IDE Setup
+# Présentation
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Cette application est un gestionnaire de quêtes inspiré des jeux de rôle .
 
-## Recommended Browser Setup
+Elle permet de créer, modifier, supprimer et suivre l'avancement de différentes quêtes à travers plusieurs colonnes représentant leur état.
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+Le projet a été développé avec Vue.js afin de mettre en pratique :
 
-## Customize configuration
+- Les composants
+- Les props
+- Les emits
+- Les directives Vue
+- Les propriétés calculées (computed)
+- Les watchers
+- La persistance des données avec localStorage
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+# Thème choisi
 
-## Project Setup
+J'ai choisi le thème RPG car il permet de rendre le projet plus ludique tout en conservant les mêmes fonctionnalités qu'un gestionnaire de tâches classique.
 
-```sh
-npm install
-```
+Chaque tâche est représentée par une quête possédant :
 
-### Compile and Hot-Reload for Development
+- un titre
+- une description
+- une difficulté
+- une récompense
+- un statut
+# Fonctionnalités implémentées :
 
-```sh
-npm run dev
-```
+## Gestion des quêtes
 
-### Compile and Minify for Production
+- Ajout d'une nouvelle quête
+- Modification d'une quête existante
+- Suppression d'une quête
+- Validation du titre obligatoire
 
-```sh
-npm run build
-```
+## Gestion des statuts
 
-### Lint with [ESLint](https://eslint.org/)
+Chaque quête peut avoir l'un des statuts suivants :
 
-```sh
-npm run lint
-```
+- Disponible
+- En cours
+- Terminée
+- Échouée
+
+Les quêtes peuvent être déplacées entre les colonnes grâce aux boutons d'action.
+
+## Affichage dynamique
+
+- Génération des colonnes avec `v-for`
+- Génération des cartes avec `v-for`
+- Affichage conditionnel avec `v-if`
+- Badge spécial lorsque la quête est terminée
+- Bouton Supprimer masqué pour les quêtes terminées
+
+## Difficulté
+Chaque quête possède un niveau de difficulté :
+
+- Facile
+- Moyenne
+- Difficile
+
+La couleur de la carte change selon la difficulté.
+
+## Persistance des données
+
+Les quêtes sont automatiquement sauvegardées dans le navigateur grâce au `localStorage`.
+Les données sont restaurées automatiquement lors du rechargement de la page.
+
+## Statistiques
+
+Une propriété calculée (`computed`) permet d'afficher le nombre total de quêtes terminées .
+
+# Architecture du projet
+
+src/
+│
+├── components/
+│   ├── Board.vue
+│   ├── Column.vue
+│   ├── Cards.vue
+│   └── Form.vue
+│
+├── App.vue
+└── main.js
+
+
+### App.vue
+
+Composant principal :
+
+- stocke les données
+- gère les méthodes
+- gère localStorage
+- centralise les événements
+
+### Form.vue
+
+Gestion du formulaire :
+
+- ajout
+- modification
+- validation
+
+### Board.vue
+
+Affichage global du tableau.
+
+### Column.vue
+
+Affichage d'une colonne selon son statut.
+
+### Cards.vue
+
+Affichage d'une quête individuelle et de ses actions.
